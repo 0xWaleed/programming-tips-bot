@@ -1,0 +1,5 @@
+
+explain to me [topic] in [language] and the maximum characters should not exceed 200
+also make it simple and concise. I expect the format like so
+json
+{"description": "your explaination here", "code": "code example here"}
