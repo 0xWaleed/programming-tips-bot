@@ -7,15 +7,15 @@ from dotenv import load_dotenv
 load_dotenv()
 options = app_options_parse()
 
+webhook = options.webhook
 language = options.language
 topic = options.topic
 
 
-WEBHOOK_URL = os.environ["WEBHOOK_URL"]
 POE_TOKEN = os.environ["POE_TOKEN"]
 
 client = poe.Client(POE_TOKEN)
-webhook = DiscordWebhook(WEBHOOK_URL)
+webhook = DiscordWebhook(webhook)
 
 def prompt_text(topic, language):
     return """
