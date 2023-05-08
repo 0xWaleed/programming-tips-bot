@@ -25,13 +25,11 @@ def prompt(bot, message):
         pass
     return chunk["text"]
 
+def prompt_0xprog(message):
+    return prompt("0xprog", message)
 
-def boot():
-    for key in client.bot_names:
-        globals()[f"prompt_{key}"] = lambda message: prompt(key, message)
 
 def main():
-    boot()
     text = prompt_text(topic, language)
     r = prompt_0xprog(text)
     content = webhook_builder(r)
