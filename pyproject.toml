@@ -9,6 +9,8 @@ packages = [{include = "programming_bot"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 poe-api = "^0.3.1"
+discord-webhook = "^1.1.0"
+python-dotenv = "^1.0.0"
 
 [tool.poetry.scripts]
 bot="programming_bot.main:main"
