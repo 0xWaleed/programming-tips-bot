@@ -1,18 +1,21 @@
 import poe
 import os
 from .options import *
-from .webhook import *
+from discord_webhook import DiscordWebhook
+from dotenv import load_dotenv
 
+load_dotenv()
 options = app_options_parse()
 
-webhook = options.webhook
 language = options.language
 topic = options.topic
 
 
+WEBHOOK_URL = os.environ["WEBHOOK_URL"]
 POE_TOKEN = os.environ["POE_TOKEN"]
 
 client = poe.Client(POE_TOKEN)
+webhook = DiscordWebhook(WEBHOOK_URL)
 
 def prompt_text(topic, language):
     return """
@@ -29,11 +32,12 @@ def prompt_0xprog(message):
     return prompt("0xprog", message)
 
 
+
 def main():
     text = prompt_text(topic, language)
     r = prompt_0xprog(text)
-    content = webhook_builder(r)
-
+    webhook.set_content(r)
+    webhook.execute()
     # send to the webhook
 
 
