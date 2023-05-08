@@ -5,7 +5,7 @@ template = """
   "embeds": [
     {
       "title": "Tip",
-      "description": "{content}",
+      "description": "@content@",
       "color": null
     }
   ],
@@ -15,5 +15,15 @@ template = """
 """
 
 def webhook_builder(content):
-    return template.format(content=content)
+    return {
+            "embeds": [
+                {
+                    "title": "Tip",
+                    "description": content,
+                    "type": "rich"
+                }
+            ],
+            "attachments": [],
+            "flags": 4096
+    }
 
