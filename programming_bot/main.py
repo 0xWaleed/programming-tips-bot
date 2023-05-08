@@ -1,5 +1,13 @@
 import poe
 import os
+from .options import *
+
+options = app_options_parse()
+
+webhook = options.webhook
+language = options.language
+topic = options.topic
+
 
 POE_TOKEN = os.environ["POE_TOKEN"]
 
@@ -23,6 +31,8 @@ def boot():
 
 def main():
     boot()
-    r = prompt_0xprog(prompt_text("variables", "javascript"))
+    text = prompt_text(topic, language)
+    r = prompt_0xprog(text)
     print(r)
+
 
