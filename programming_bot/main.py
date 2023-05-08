@@ -1,6 +1,7 @@
 import poe
 import os
 from .options import *
+from .webhook import *
 
 options = app_options_parse()
 
@@ -33,6 +34,8 @@ def main():
     boot()
     text = prompt_text(topic, language)
     r = prompt_0xprog(text)
-    print(r)
+    content = webhook_builder(r)
+
+    # send to the webhook
 
 
